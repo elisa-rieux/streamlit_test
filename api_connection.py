@@ -7,13 +7,27 @@ import numpy as np
 
 # create GET request
 
-def get_data_from_api():
+def get_data_from_api(city):
     
-    url = 
-    header = 
-    params = 
+    url = 'http://api.openweathermap.org/data/2.5/weather'
+    params = {
+        'q': city,
+        'appid': '296f04ea9e6e74b65b53c900c732b2e8',
+        'units': 'metric'
+    }
 
-    response = requests.get(url, headers=headers, params=params)
+    response = requests.get(url, params=params)
     outputs = response.json()
 
+    return outputs
+
+def get_data_forecast(city):
+    url = 'http://api.openweathermap.org/data/2.5/forecast'  # Modification ici
+    params = {
+        'q': city,
+        'appid': '296f04ea9e6e74b65b53c900c732b2e8',
+        'units': 'metric'
+    }
+    response = requests.get(url, params=params)
+    outputs = response.json()
     return outputs
